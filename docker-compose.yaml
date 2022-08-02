@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+    app:
+      container_name: falemais-api
+      build: .
+      command: yarn start:dev
+      ports: 
+        - 3000:3000
+      volumes:
+        - ".:/usr/app"
+      working_dir: /usr/app
+      links:
+        - postgres
+      depends_on:
+        - postgres
+      environment:
+        DATABASE_URL: postgres://root:root@postgres:5432/db
+
+    postgres:
+      image: postgres:10.4
+      ports:
+        - "5432:5432"
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: root
+        POSTGRES_DB: db
