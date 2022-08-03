@@ -24,3 +24,13 @@ services:
         POSTGRES_USER: root
         POSTGRES_PASSWORD: root
         POSTGRES_DB: db
+
+    pgadmin-compose:
+      image: dpage/pgadmin4
+      environment:
+        PGADMIN_DEFAULT_EMAIL: "kollen22@outlook.com"
+        PGADMIN_DEFAULT_PASSWORD: "0000"
+      ports:
+        - "15432:80"
+      depends_on:
+        - app
