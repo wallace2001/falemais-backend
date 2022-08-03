@@ -1,4 +1,4 @@
-import { PlansFaker } from '../../fixtures/plans/plans.faker';
+import { PlansFaker } from '../../factories/plans/plans.factory';
 import { get, isArray } from 'lodash';
 import { MESSAGE_ERROR_ALREADY_EXISTS_PLAN } from '../../constants';
 import { Test, TestingModule } from '@nestjs/testing';
@@ -50,10 +50,9 @@ describe('PlansService', () => {
         const planSaved = await plansService.create(planMocked);
 
         expect(get(planSaved, 'id')).toBeTruthy();
-        expect(get(planSaved, 'origin')).toBe(planMocked.origin);
-        expect(get(planSaved, 'destiny')).toBe(planMocked.destiny);
+        expect(get(planSaved, 'description')).toBe(planMocked.description);
+        expect(get(planSaved, 'minutes')).toBe(planMocked.minutes);
         expect(get(planSaved, 'instance')).toBe(planMocked.instance);
-        expect(get(planSaved, 'price')).toBe(planMocked.price);
       });
     });
     describe('and if already a plan', () => {

@@ -27,10 +27,9 @@ export class PlansService {
 
     const plan = new PlansDto();
     plan.id = savedPlan.id;
-    plan.origin = savedPlan.origin;
-    plan.destiny = savedPlan.destiny;
+    plan.description = savedPlan.description;
+    plan.minutes = savedPlan.minutes;
     plan.instance = savedPlan.instance;
-    plan.price = savedPlan.price;
 
     return plan;
   }

@@ -1,7 +1,6 @@
 export class PlansDto {
   id: number;
-  origin: string;
-  destiny: string;
-  price: string;
+  description: string;
+  minutes: number;
   instance: string;
 }

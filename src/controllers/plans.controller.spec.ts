@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { PlansDto } from 'src/entities/plans/plansDto';
 import { Plans } from '../entities/plans/plans.entity';
-import { PlansFaker } from '../fixtures/plans/plans.faker';
+import { PlansFaker } from '../factories/plans/plans.factory';
 import * as request from 'supertest';
 import { PlansService } from '../services/plans/plans.service';
 import { PlansController } from './plans/plans.controller';
@@ -49,9 +49,8 @@ describe('PlansController', () => {
         return request(app.getHttpServer())
           .post('/plans')
           .send({
-            origin: plansMocked.origin,
-            destiny: plansMocked.destiny,
-            price: plansMocked.price,
+            description: plansMocked.description,
+            minutes: plansMocked.minutes,
             instance: plansMocked.instance,
           })
           .expect(200);
@@ -67,7 +66,7 @@ describe('PlansController', () => {
         return request(app.getHttpServer())
           .post('/plans')
           .send({
-            origin: plansMocked.origin,
+            description: plansMocked.description,
           })
           .expect(400);
       });

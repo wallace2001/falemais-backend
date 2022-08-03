@@ -8,10 +8,9 @@ export class PlansFaker {
     if (hasId) {
       plan.id = Number(faker.random.numeric());
     }
-    plan.origin = faker.random.numeric(3);
-    plan.destiny = faker.random.numeric(3);
+    plan.description = faker.name.firstName('male');
+    plan.minutes = Number(faker.random.numeric(4));
     plan.instance = faker.name.firstName('male');
-    plan.price = faker.random.numeric(3);
 
     return plan;
   }

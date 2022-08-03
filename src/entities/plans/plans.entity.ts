@@ -1,19 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
-export class Plans {
+@Entity({ name: 'plans' })
+export class Plans extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  origin: string;
+  description: string;
 
   @Column()
-  destiny: string;
+  minutes: number;
 
-  @Column()
+  @Column({ unique: true })
   instance: string;
-
-  @Column()
-  price: string;
 }
